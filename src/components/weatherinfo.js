@@ -1,21 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import WeatherContext from '../context';
 import { WeatherInfoInner, WeatherInfoWrapper } from '../styles/styledweatherinfo';
-import Today from './date';
-import Forecast from './forecast';
 import Weatherextra from './weatherextra';
-import Weatherimage from './weatherimage';
 
 const WeatherInfo = () => {
 
+    const {error} = useContext(WeatherContext);
 
     return (
         <>
             <WeatherInfoWrapper>
                 <WeatherInfoInner>
-                    <Today />
-                    <Weatherimage />
-                    <Weatherextra />
-                    <Forecast />
+                    {!error && <Weatherextra />}
                 </WeatherInfoInner>
             </WeatherInfoWrapper>
         </>

@@ -11,8 +11,7 @@ const Weatherimage = () => {
     return (
         <>
           <WeatherImage>
-            <h3>{description}</h3>
-            <img src={desc_img} alt={description} />
+            <img src={desc_img} alt={description} title={description} />
           </WeatherImage>
         </>
     )

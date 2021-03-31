@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { CitySearch, 
         DayorNight, 
         SectionWrapper, 
-        DayIcon, 
-        SearchIcon, 
+        DayIcon,
         SearchBox, 
-        NightIcon } from '../styles/styledtop';
+        NightIcon, 
+        SectionInner,
+        ErrorMessage} from '../styles/styledtop';
 import WeatherContext from '../context';
 
 const TopSection = () => {
@@ -14,17 +15,29 @@ const TopSection = () => {
 
     const {getWeather, getCity, cityname} = useContext(WeatherContext);
     const {timeofday, sunsettime, sunrisetime} = useContext(WeatherContext);
+    const {error} = useContext(WeatherContext)
 
     return (
         <>
             <SectionWrapper>
-                <DayorNight>
-                    {timeofday >= sunrisetime && timeofday <= sunsettime ? <DayIcon /> : <NightIcon />}
-                </DayorNight>
-                <CitySearch>
-                    <SearchBox type="text" onChange={getCity} value={cityname} />
-                    <SearchIcon onClick ={getWeather} />
-                </CitySearch >
+                <SectionInner>
+                    <DayorNight>
+                        {timeofday >= sunrisetime && timeofday <= sunsettime ? <DayIcon /> : <NightIcon />}
+                    </DayorNight>
+                    <CitySearch>
+                        <SearchBox 
+                            type="text" 
+                            onChange={getCity} 
+                            value={cityname}
+                            onKeyUp={getWeather}
+                            placeholder='Enter city name'
+                            error={error}
+                            />
+                    </CitySearch >
+                </SectionInner>
+                
+                {error && 
+                    <ErrorMessage>{error}</ErrorMessage>}
             </SectionWrapper>   
         </>
     )

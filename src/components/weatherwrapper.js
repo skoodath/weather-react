@@ -1,37 +1,52 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import WeatherContext from '../context';
 import { 
         CityName, 
         CitySpace, 
         CountryName, 
+        LocationWrap, 
         SearchTime, 
-        TempAdditional, 
         TempSpace, 
         TempVal, 
+        TempWrap, 
         WeatherWrapper } from '../styles/styledweatherwrapper';
+import Weatherimage from './weatherimage';
 
 
 
 const Weatherwrap = () => {
 
-    const {weather, currentTime} = useContext(WeatherContext);
 
-    const {city, country, temperature, temp_high, temp_low} = weather;
+    const {weather, currentTime, currentDate, error} = useContext(WeatherContext);
+
+    const {city, country, temperature} = weather;
+
+    const [metric, setMetric] = useState(false);
+
+    const metricSwitch = () => {
+        setMetric(!metric);
+    }
+
     return (
         <>
             <WeatherWrapper>
                 <CitySpace>
-                    <CityName>{city}</CityName>
-                    <CountryName>{country}</CountryName>
-                    <SearchTime>{currentTime}</SearchTime>
+                    <LocationWrap>
+                        <CityName>{city}{city && <span>,&nbsp;</span>}</CityName>
+                        <CountryName>{country}</CountryName>
+                    </LocationWrap>
+                    {currentTime && <SearchTime>{currentTime}</SearchTime>}
+                    {!error && currentDate && <span>{currentDate}</span>}
                 
                 </CitySpace>
                 <TempSpace>
-                    <TempVal>{temperature? <span>{temperature}&deg;F</span>: ''}</TempVal>
-                    <TempAdditional>
-                        {temp_high? <span><b>H: </b>{temp_high}&deg;F</span>: ''}
-                        {temp_low? <span><b>L: </b>{temp_low}&deg;F</span>: ''}
-                    </TempAdditional>
+                    <Weatherimage />
+                    <TempWrap onClick={metricSwitch}>
+                        {temperature && metric && <TempVal><span>{temperature}&deg;C</span></TempVal>}
+                        {temperature && !metric && <TempVal><span>{(temperature * (9/5)+32).toFixed(1)}&deg;F</span></TempVal>}
+
+                    </TempWrap>
+                    
                 </TempSpace>
             </WeatherWrapper>
         </>

@@ -1,25 +1,43 @@
 import React, { useContext } from 'react';
 import WeatherContext from '../context';
-import { ExtraInner, WeatherExtraWrapper } from '../styles/styledweatherinfo';
+import { WeatherExtraWrapper, ExtraInnerDay } from '../styles/styledweatherinfo';
+import Forecast from './forecast';
 
 const Weatherextra = () => {
 
     const {weather} = useContext(WeatherContext);
 
-    const {windspeed, humidity} = weather;
+
+    const {windspeed, humidity, lat, lon, feels_like } = weather;
 
     return (
+        <>
         <WeatherExtraWrapper>
-            {windspeed? 
-                <ExtraInner>
-                    <b>Wind: </b>{windspeed} mph
-                </ExtraInner> : ''}
-            
-            {humidity? 
-                <ExtraInner>
-                <b>Humidity: </b>{humidity}%
-                </ExtraInner> : ''}
+            {windspeed ?
+                <ExtraInnerDay>
+                    <li>
+                        <h5>Real Feel</h5>
+                        <span>{feels_like}&deg;C</span>
+                    </li>
+                    <li>
+                        <h5>Wind</h5>
+                        <span>{windspeed}mph</span>
+                    </li>
+                    <li>
+                        <h5>Humidity</h5>
+                        <span>{humidity}%</span>
+                    </li>
+                    <li>
+                        <h5>Latitude</h5>
+                        <span>{lat}&deg;</span>
+                        <h5>Longitude</h5>
+                        <span>{lon}&deg;</span>
+                    </li>
+                    
+                </ExtraInnerDay> : "" }
         </WeatherExtraWrapper>
+        <Forecast />
+        </>
     )
 }
 

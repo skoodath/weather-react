@@ -1,79 +1,98 @@
 import styled from 'styled-components';
-import bg from './../images/backgroundpattern.svg';
 
 export const WeatherInfoWrapper = styled.section`
-    height: 63vh;
+    height: 65%;
     position: relative;
 `;
 export const WeatherInfoInner = styled.div`
     height: 100%;
-    background-image: url(${bg});
-    background-size: cover;
-    background-repeat: no-repeat;
     position: relative;
 `;
 
 export const CurrentDate = styled.div`
     position: absolute;
-    width: 75px;
-    height: 110px;
+    width: 60px;
+    height: 90px;
     background-color: #fffc;
-    color: #00AEFF;
-    top: -10%;
+    color: #00344D;
+    top: -5%;
     left: 20%;
-    box-shadow: 0 0 10px #00000040;
-    border-radius: 10px;
+    box-shadow: 0 0 3px #00000040;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     span{
         font-weight: bold;
+        font-size: 0.9rem;
     }
 `;
 
 export const WeatherImage = styled.div`
-    height: 10rem;
     background-color: transparent;
     display: flex;
-    padding: 1rem 2rem 0 0;
-    justify-content: center;
+    flex-direction: column;
+    padding: 0;
     align-items: center;
+    justify-content: center;
+    user-select: none;
     img{
-        width: 120px;
-        border-radius: 5px;
-        background-color: #00aaff70;
+        background-color: #ffffff50;
+        border-radius: 5px 0 0 5px;
     }
     h3{
-        color: #00aaff;
+        color: #fff;
         width: 100%;
         text-align: center;
-        margin: 0 2rem 0 0;
+        margin: 0.4rem;
     }
 `;
 
 export const WeatherExtraWrapper = styled.div`
-    height: 100px;
+    height: 38%;
+    padding: 0;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     position: relative;
-    &::after{
-        position: absolute;
-        content: '';
-        width: 20%;
-        height: 3px;
-        border-radius: 100px;
-        background-color: #00aaff;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 0;
-        z-index: 1;
+    user-select: none;
+`;
 
+export const ExtraInnerDay = styled.ul`
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    user-select: none;
+    li{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 4px;
+        background-color: #ffffff35;
+        margin: 0.25rem;
+        padding: 0.8rem;
+        border: none;
+        width: 100%;
+        height: 80px;
+        flex-grow: 0;
+        flex-basis: 150px;
+        color: #fff;
+
+
+        h5{
+            font-size: .95rem;
+            user-select: none;
+        }
+        span{
+            font-size: 0.7rem;
+            user-select: none;
+        }
     }
 `;
 
-export const ExtraInner = styled.div`
-    color: #00AAFF;
-`;
 

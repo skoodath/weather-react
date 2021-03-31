@@ -6,10 +6,16 @@ import { BiSearch } from 'react-icons/bi';
 
 export const SectionWrapper = styled.section`
     display: flex;
-    height: 9vh;
-    padding: 1rem;
+    flex-direction: column;
+    height: 9%;
+    user-select: none;
+`;
+export const SectionInner = styled.div`
+    display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem 1rem 0.4rem;
+    height: 100%;
 `;
 
 export const DayorNight = styled.div`
@@ -50,7 +56,7 @@ export const SearchIcon = styled(BiSearch)`
 export const SearchBox = styled.input`
     background-color: #ffffff35;
     border-radius: 5px;
-    border: none;
+    border: ${({error}) => error? '1px solid red': '1px solid transparent'};
     outline: none;
     padding: 0.3rem;
     color: #fff;
@@ -58,4 +64,20 @@ export const SearchBox = styled.input`
     display: flex;
     height: 100%;
     position: absolute;
+    &:focus{
+        background-color: #ffffff75;
+        transition-property: background-color;
+        transition-duration: 0.5s;
+    }
+`;
+
+export const ErrorMessage = styled.span`
+    color: #ff0000;
+    background-color: #ffffff65;
+    padding: 0.2rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
 `;
