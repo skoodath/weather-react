@@ -6,6 +6,7 @@ export const StyledWrapperDay = styled.section`
     background-image: linear-gradient(-120deg,#70d7ff,#6c86db);
     overflow: hidden;
     min-width: 360px;
+    width: 100%;
     @media ${device.tablet}{
       height: 768px;
       border-radius: 10px;
