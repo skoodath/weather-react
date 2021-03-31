@@ -61,6 +61,7 @@ const Wrapper = () => {
       }
       try{
         if (event.key === 'Enter' && cityname) {
+          
           const request = axios.get(`${baseURL}${cityname}&${apikey}&units=metric`);
           const response = await request;
             setWeather({
@@ -93,7 +94,7 @@ const Wrapper = () => {
             calCitySunset(response.data.sys.sunset, response.data.timezone);
             calCitySunrise(response.data.sys.sunrise, response.data.timezone);
             calCurrentTime(response.data.timezone);
-            setCityName(''); 
+            setCityName('');
         }
       }
       catch(error){

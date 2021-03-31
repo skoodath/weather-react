@@ -64,6 +64,7 @@ export const SearchBox = styled.input`
     display: flex;
     height: 100%;
     position: absolute;
+    min-height: 46px;
     &:focus{
         background-color: #ffffff75;
         transition-property: background-color;

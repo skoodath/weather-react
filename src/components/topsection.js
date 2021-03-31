@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { CitySearch, 
         DayorNight, 
         SectionWrapper, 
@@ -11,11 +11,15 @@ import WeatherContext from '../context';
 
 const TopSection = () => {
 
-    
+    const inputRef = useRef(null);
 
     const {getWeather, getCity, cityname} = useContext(WeatherContext);
     const {timeofday, sunsettime, sunrisetime} = useContext(WeatherContext);
     const {error} = useContext(WeatherContext)
+
+    useEffect(() => {
+        inputRef.current.blur();
+    },[])
 
     return (
         <>
@@ -32,6 +36,7 @@ const TopSection = () => {
                             onKeyUp={getWeather}
                             placeholder='Enter city name'
                             error={error}
+                            ref={inputRef}
                             />
                     </CitySearch >
                 </SectionInner>
