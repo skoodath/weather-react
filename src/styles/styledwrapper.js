@@ -5,8 +5,12 @@ export const StyledWrapperDay = styled.section`
     height: 100vh;
     background-image: linear-gradient(-120deg,#70d7ff,#6c86db);
     overflow: hidden;
-    max-width: 360px;
     min-width: 360px;
+    @media ${device.tablet}{
+      height: 768px;
+      border-radius: 10px;
+      max-width: 360px;
+    }
     @media ${device.desktop}{
       height: 768px;
       border-radius: 10px;
