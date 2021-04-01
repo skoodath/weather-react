@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const WeatherWrapper = styled.section`
     height: 35%;
+    min-height: 265px;
     display: flex;
     flex-direction: column;
     padding: 1rem;

@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 export const WeatherInfoWrapper = styled.section`
     height: 65%;
+    min-height: 495px;
     position: relative;
 `;
 export const WeatherInfoInner = styled.div`
+    min-height: 495px;
     height: 100%;
     position: relative;
 `;
@@ -51,6 +53,7 @@ export const WeatherImage = styled.div`
 
 export const WeatherExtraWrapper = styled.div`
     height: 38%;
+    min-height: 190px;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -62,6 +65,7 @@ export const WeatherExtraWrapper = styled.div`
 
 export const ExtraInnerDay = styled.ul`
     width: 100%;
+    min-height: 90px;
     margin: 0 auto;
     display: flex;
     flex-flow: row wrap;
