@@ -8,6 +8,7 @@ export const SectionWrapper = styled.section`
     display: flex;
     flex-direction: column;
     height: 9%;
+    min-height: 70px;
     user-select: none;
 `;
 export const SectionInner = styled.div`

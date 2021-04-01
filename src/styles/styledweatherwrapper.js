@@ -11,6 +11,7 @@ export const WeatherWrapper = styled.section`
 `;
 export const CitySpace = styled.div`
     width: 100%;
+    min-height: 80px;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -36,6 +37,7 @@ export const SearchTime = styled.p`
 `;
 
 export const TempSpace = styled.div`
+    min-height: 100px;
     width: 100%;
     color: #fff;
     display: flex;
