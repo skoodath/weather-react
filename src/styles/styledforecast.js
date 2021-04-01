@@ -17,7 +17,7 @@ export const ForecastDataItem = styled.li`
     height: 90px;
     width: 50px;
     border-radius: 4px;
-    background-color: #ffffff75;
+    background-color: #ffffff45;
     flex-basis: calc(100%-5);
     flex-grow: 1;
     flex-shrink: 1;

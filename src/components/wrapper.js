@@ -11,7 +11,7 @@ const Wrapper = () => {
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState([]);
   const [cityname, setCityName] = useState('');
-  const [timeofday, setTimeofday] = useState(0);
+  const [timeofday, setTimeofday] = useState(null);
   const [sunsettime, setSunsetTime] = useState(0);
   const [sunrisetime, setSunriseTime] = useState(0);
   const [currentTime, setCurrentTime] = useState(null);

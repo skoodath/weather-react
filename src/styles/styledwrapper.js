@@ -3,7 +3,7 @@ import {device } from './device';
 
 export const StyledWrapperDay = styled.section`
     height: 100vh;
-    background-image: linear-gradient(-120deg,#70d7ff,#6c86db);
+    background-image: linear-gradient(#70d7ff,#6c86db);
     overflow: hidden;
     min-width: 360px;
     width: 100%;
@@ -19,7 +19,7 @@ export const StyledWrapperDay = styled.section`
 
 export const StyledWrapperNight = styled.section`
     height: 100vh;
-    background-image: linear-gradient(-120deg, #0b3bcc, #262c3e);
+    background-image: linear-gradient(#0b3bcc, #262c3e);
     overflow: hidden;
     min-width: 360px;
     width: 100%;

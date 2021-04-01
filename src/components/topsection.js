@@ -25,9 +25,9 @@ const TopSection = () => {
         <>
             <SectionWrapper>
                 <SectionInner>
-                    <DayorNight>
+                    {timeofday && <DayorNight>
                         {timeofday >= sunrisetime && timeofday <= sunsettime ? <DayIcon /> : <NightIcon />}
-                    </DayorNight>
+                    </DayorNight>}
                     <CitySearch>
                         <SearchBox 
                             type="text" 
