@@ -81,7 +81,7 @@ const Wrapper = () => {
               sunrise: response.data.sys.sunrise,
               timezone: response.data.timezone
             })
-            const req = axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?city=${cityname}&key=681006333aa8439e85280af36ab1d28e&days=5`)
+            const req = axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?city=${cityname}&key=681006333aa8439e85280af36ab1d28e&days=6`)
             const res = await req;
             let myForecast = res.data.data.map(d => 
               ({date: new Date(Date.parse(d.valid_date)).toLocaleString("en-us", {weekday: "short"}), 
@@ -89,8 +89,8 @@ const Wrapper = () => {
                 min: d.min_temp,
                 icon: d.weather.icon,
                 desc: d.weather.description}));
-              setForecast(myForecast);
-          
+            let filteredForecast = myForecast.filter((newForecast, i)=> i > 0);
+            setForecast(filteredForecast);
             calCitySunset(response.data.sys.sunset, response.data.timezone);
             calCitySunrise(response.data.sys.sunrise, response.data.timezone);
             calCurrentTime(response.data.timezone);

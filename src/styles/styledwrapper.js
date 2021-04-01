@@ -9,23 +9,26 @@ export const StyledWrapperDay = styled.section`
     width: 100%;
     @media ${device.tablet}{
       height: 768px;
-      border-radius: 10px;
+      border-radius: 15px;
       max-width: 360px;
     }
     @media ${device.desktop}{
-      height: 768px;
-      border-radius: 10px;
+      border-radius: 15px;
     }
 `;
 
 export const StyledWrapperNight = styled.section`
     height: 100vh;
-    background-image: linear-gradient(45deg, #0b3bcc, #262c3e);
+    background-image: linear-gradient(-120deg, #0b3bcc, #262c3e);
     overflow: hidden;
-    max-width: 360px;
     min-width: 360px;
-    @media ${device.desktop}{
+    width: 100%;
+    @media ${device.tablet}{
       height: 768px;
-      border-radius: 10px;
+      border-radius: 15px;
+      max-width: 360px;
+    }
+    @media ${device.desktop}{
+      border-radius: 15px;
     }
 `;
