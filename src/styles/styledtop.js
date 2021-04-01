@@ -55,19 +55,20 @@ export const SearchIcon = styled(BiSearch)`
     z-index: 1;
 `;
 export const SearchBox = styled.input`
-    background-color: #ffffff35;
+    background-color: #ffffff75;
     border-radius: 5px;
     border: ${({error}) => error? '1px solid red': '1px solid transparent'};
     outline: none;
     padding: 0.3rem;
-    color: #fff;
+    color: #4a5f99;
     width: 100%;
     display: flex;
     height: 100%;
     position: absolute;
     min-height: 46px;
+    font-size: 20px;
     &:focus{
-        background-color: #ffffff75;
+        background-color: #ffffff35;
         transition-property: background-color;
         transition-duration: 0.5s;
     }
