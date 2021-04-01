@@ -7,7 +7,7 @@ import { BiSearch } from 'react-icons/bi';
 export const SectionWrapper = styled.section`
     display: flex;
     flex-direction: column;
-    height: 9%;
+    height: 100px;
     min-height: 70px;
     user-select: none;
 `;
@@ -15,15 +15,14 @@ export const SectionInner = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem 1rem 0.4rem;
-    height: 100%;
+    padding: 1.5rem 1rem 0.4rem;
+    height: 80px;
 `;
 
 export const DayorNight = styled.div`
     width: 10%;
     height: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
 `;
 
@@ -60,10 +59,10 @@ export const SearchBox = styled.input`
     border: ${({error}) => error? '1px solid red': '1px solid transparent'};
     outline: none;
     padding: 0.3rem;
-    color: #4a5f99;
+    color: #ffffff;
     width: 100%;
     display: flex;
-    height: 100%;
+    height: 46px;
     position: absolute;
     min-height: 46px;
     font-size: 20px;
