@@ -37,7 +37,6 @@ export const SearchTime = styled.p`
 `;
 
 export const TempSpace = styled.div`
-    min-height: 100px;
     width: 100%;
     color: #fff;
     display: flex;
@@ -47,6 +46,7 @@ export const TempSpace = styled.div`
     cursor: pointer;
 `;
 export const TempWrap = styled.div`
+    min-height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
