@@ -46,7 +46,7 @@ export const TempSpace = styled.div`
     cursor: pointer;
 `;
 export const TempWrap = styled.div`
-    min-height: 100px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
