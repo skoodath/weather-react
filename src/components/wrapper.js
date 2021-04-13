@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useRef, useState } from 'react';
 import { StyledWrapperDay, StyledWrapperNight } from '../styles/styledwrapper';
 import Weatherwrap from './weatherwrapper';
 import WeatherInfo from './weatherinfo';
@@ -7,6 +7,8 @@ import axios from 'axios';
 import WeatherContext from '../context';
 
 const Wrapper = () => {
+
+  const inputRef = useRef(null);
 
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState([]);
@@ -95,6 +97,7 @@ const Wrapper = () => {
             calCitySunrise(response.data.sys.sunrise, response.data.timezone);
             calCurrentTime(response.data.timezone);
             setCityName('');
+            inputRef.current.blur();
         }
       }
       catch(error){
@@ -128,7 +131,7 @@ const Wrapper = () => {
             {timeofday >= sunrisetime && timeofday <= sunsettime ? 
             
             <StyledWrapperDay>
-              <TopSection />
+              <TopSection ref={inputRef} />
               <Weatherwrap />
               <WeatherInfo />  
             </StyledWrapperDay> : 

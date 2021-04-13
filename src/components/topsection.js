@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext } from 'react';
 import { CitySearch, 
         DayorNight, 
         SectionWrapper, 
@@ -9,17 +9,11 @@ import { CitySearch,
         ErrorMessage} from '../styles/styledtop';
 import WeatherContext from '../context';
 
-const TopSection = () => {
-
-    const inputRef = useRef(null);
+const TopSection = React.forwardRef((props, ref) => {
 
     const {getWeather, getCity, cityname} = useContext(WeatherContext);
     const {timeofday, sunsettime, sunrisetime} = useContext(WeatherContext);
     const {error} = useContext(WeatherContext)
-
-    useEffect(() => {
-        inputRef.current.blur();
-    },[])
 
     return (
         <>
@@ -36,7 +30,7 @@ const TopSection = () => {
                             onKeyUp={getWeather}
                             placeholder='Enter city name'
                             error={error}
-                            ref={inputRef}
+                            ref={ref}
                             />
                     </CitySearch >
                 </SectionInner>
@@ -46,6 +40,6 @@ const TopSection = () => {
             </SectionWrapper>   
         </>
     )
-}
+})
 
 export default TopSection;
