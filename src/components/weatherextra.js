@@ -28,10 +28,8 @@ const Weatherextra = () => {
                         <span>{humidity}%</span>
                     </li>
                     <li>
-                        <h5>Latitude</h5>
-                        <span>{lat}&deg;</span>
-                        <h5>Longitude</h5>
-                        <span>{lon}&deg;</span>
+                        <h5>Lat | Lon</h5>
+                        <span>{lat}&deg; | {lon}&deg;</span>
                     </li>
                     
                 </ExtraInnerDay> : "" }
