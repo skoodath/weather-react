@@ -8,8 +8,6 @@ import WeatherContext from '../context';
 
 const Wrapper = () => {
 
-  const inputRef = useRef(null);
-
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState([]);
   const [cityname, setCityName] = useState('');
@@ -96,9 +94,8 @@ const Wrapper = () => {
             calCitySunset(response.data.sys.sunset, response.data.timezone);
             calCitySunrise(response.data.sys.sunrise, response.data.timezone);
             calCurrentTime(response.data.timezone);
-            setCityName('');
-            inputRef.current.blur();
         }
+
       }
       catch(error){
         setError('City name was not found');
@@ -131,7 +128,7 @@ const Wrapper = () => {
             {timeofday >= sunrisetime && timeofday <= sunsettime ? 
             
             <StyledWrapperDay>
-              <TopSection ref={inputRef} />
+              <TopSection />
               <Weatherwrap />
               <WeatherInfo />  
             </StyledWrapperDay> : 
