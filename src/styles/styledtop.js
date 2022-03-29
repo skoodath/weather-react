@@ -69,6 +69,9 @@ export const SearchBox = styled.input`
     transition-property: background-color;
     transition-duration: 0.5s;
   }
+  &::placeholder {
+    color: navy;
+  }
 `;
 
 export const ErrorMessage = styled.span`
