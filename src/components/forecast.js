@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import WeatherContext from '../context';
-import { ForecastWrapper, ForecastData, ForecastDataItem } from '../styles/styledforecast';
+import { ForeCast } from '../styles/forecast.style';
 
 
 const Forecast = () => {
     const {forecast} = useContext(WeatherContext);
+    const { ForecastWrapper, ForecastData, ForecastDataItem } = ForeCast;
     
     return (
         <ForecastWrapper>

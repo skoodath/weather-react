@@ -1,36 +1,34 @@
-import React, { useContext } from 'react';
-import { CitySearch, 
-        DayorNight, 
-        SectionWrapper, 
-        DayIcon,
-        SearchBox, 
-        NightIcon, 
-        SectionInner,
-        ErrorMessage} from '../styles/styledtop';
+import React, { useContext, useRef } from 'react';
+import { Header} from '../styles/header.style';
 import WeatherContext from '../context';
 
-const TopSection = React.forwardRef((props, ref) => {
+const TopSection = (props, ref) => {
 
     const {getWeather, getCity, cityname} = useContext(WeatherContext);
-    const {timeofday, sunsettime, sunrisetime} = useContext(WeatherContext);
+
+    const inputRef = useRef(null);
+
     const {error} = useContext(WeatherContext)
+
+    const { CitySearch, 
+        SectionWrapper, 
+        SearchBox, 
+        SectionInner,
+        ErrorMessage } = Header;
 
     return (
         <>
             <SectionWrapper>
                 <SectionInner>
-                    {timeofday && <DayorNight>
-                        {timeofday >= sunrisetime && timeofday <= sunsettime ? <DayIcon /> : <NightIcon />}
-                    </DayorNight>}
                     <CitySearch>
                         <SearchBox 
                             type="text" 
                             onChange={getCity} 
                             value={cityname}
                             onKeyUp={getWeather}
-                            placeholder='Enter city name'
+                            placeholder='Type city...'
                             error={error}
-                            ref={ref}
+                            ref={inputRef}
                             />
                     </CitySearch >
                 </SectionInner>
@@ -40,6 +38,6 @@ const TopSection = React.forwardRef((props, ref) => {
             </SectionWrapper>   
         </>
     )
-})
+}
 
 export default TopSection;

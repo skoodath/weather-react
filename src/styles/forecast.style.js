@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const ForecastWrapper = styled.div`
-  padding: 0 1rem;
-  margin: 2rem 0 0 0;
-`;
-
-export const ForecastData = styled.ul`
+export const ForeCast = {
+  ForecastWrapper: styled.div`
+    padding: 0 1rem;
+    margin: 2rem 0 0 0;
+  `,
+  ForecastData: styled.ul`
   display: flex;
-`;
-export const ForecastDataItem = styled.li`
+`,
+ForecastDataItem: styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,7 @@ export const ForecastDataItem = styled.li`
   height: 90px;
   width: 50px;
   border-radius: 4px;
-  background-color: #ffffff45;
+  background-color: #ecfcff45;
   flex-basis: calc(100%-5);
   flex-grow: 1;
   flex-shrink: 1;
@@ -27,6 +27,6 @@ export const ForecastDataItem = styled.li`
   }
   span {
     font-size: 0.7rem;
-    color: #ffffff;
   }
-`;
+`
+}

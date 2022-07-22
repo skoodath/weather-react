@@ -8,15 +8,13 @@ const GlobalStyle = createGlobalStyle`
         list-style: none;
         font-size: 16px;
         line-height: normal;
+        line-spacing: 1px;
     }
     body{
         font-family: 'Open Sans', sans-serif;
-        height: 100vh;
-        overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #ddd;
     }
 `;
 

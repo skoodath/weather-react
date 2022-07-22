@@ -1,14 +1,10 @@
 import React from 'react';
-import Wrapper from './components/wrapper';
-import GlobalStyle from './styles/globalstyles';
+import GlobalStyle from './styles/global.style';
 import { Helmet } from 'react-helmet';
-
-//import Error from './components/error';
+import WrapperComponent from './components/wrapper';
 
 const App = () => {
  
-  //const [error, setError] = useState('');
-
   return (
       <>
         <Helmet>
@@ -20,7 +16,7 @@ const App = () => {
           <meta property="og:url" content="https://weathersnap.netlify.app/" />
           <meta property="twitter:site" content="https://weathersnap.netlify.app/" />
         </Helmet>
-        <Wrapper />
+        <WrapperComponent />
         <GlobalStyle />
       </>
   )

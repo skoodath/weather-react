@@ -1,50 +1,19 @@
-import React, { useState } from "react";
-import { StyledWrapperDay, StyledWrapperNight } from "../styles/styledwrapper";
+import React, { useEffect, useState } from "react";
+import { Wrapper } from "../styles/wrapper.style";
 import Weatherwrap from "./weatherwrapper";
-import WeatherInfo from "./weatherinfo";
 import TopSection from "./topsection";
 import axios from "axios";
 import WeatherContext from "../context";
+import Forecast from "./forecast";
 
-const Wrapper = () => {
+const WrapperComponent = () => {
+
+  const { WrapperDay } = Wrapper;
+
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState([]);
   const [cityname, setCityName] = useState("");
-  const [timeofday, setTimeofday] = useState(null);
-  const [sunsettime, setSunsetTime] = useState(0);
-  const [sunrisetime, setSunriseTime] = useState(0);
-  const [currentTime, setCurrentTime] = useState(null);
   const [error, setError] = useState("");
-  const [currentDate, setCurrentDate] = useState(null);
-
-  const calCitySunset = (sunset, timezone) => {
-    let dt = new Date(sunset * 1000);
-    let utctime = dt.getTime() + dt.getTimezoneOffset() * 60000;
-    let ltime = new Date(utctime + timezone * 1000).getHours();
-    setSunsetTime(ltime);
-  };
-
-  const calCitySunrise = (sunrise, timezone) => {
-    let ct = new Date(sunrise * 1000);
-    let utctimect = ct.getTime() + ct.getTimezoneOffset() * 60000;
-    let ltimect = new Date(utctimect + timezone * 1000).getHours();
-    setSunriseTime(ltimect);
-  };
-  const calCurrentTime = (timezone) => {
-    let ct = new Date();
-    let utctimect = ct.getTime() + ct.getTimezoneOffset() * 60000;
-    let ltimect = new Date(utctimect + timezone * 1000).getHours();
-    let ctTime = new Date(utctimect + timezone * 1000);
-    setTimeofday(ltimect);
-    setCurrentTime(ctTime.toLocaleTimeString());
-    setCurrentDate(
-      `${ctTime.toLocaleString("en-us", {
-        weekday: "short",
-      })}, ${ctTime.toLocaleString("en-us", {
-        month: "short",
-      })} ${ctTime.getDate()} ${ctTime.getFullYear()}`
-    );
-  };
 
   const getCity = (event) => {
     event.preventDefault();
@@ -63,7 +32,7 @@ const Wrapper = () => {
     }
     try {
       if (event.key === "Enter" && cityname) {
-        const request = axios.get(
+        const request = await axios.get(
           `${baseURL}${cityname}&${apikey}&units=metric`
         );
         const response = await request;
@@ -78,42 +47,42 @@ const Wrapper = () => {
           desc_img: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
           windspeed: response.data.wind.speed,
           humidity: response.data.main.humidity,
-          lat: response.data.coord.lat.toFixed(1),
-          lon: response.data.coord.lon.toFixed(1),
-          sunset: response.data.sys.sunset,
-          sunrise: response.data.sys.sunrise,
-          timezone: response.data.timezone,
         });
-        const req = axios.get(
-          `https://api.weatherbit.io/v2.0/forecast/daily?city=${cityname}&key=681006333aa8439e85280af36ab1d28e&days=6`
-        );
-        const res = await req;
-        let myForecast = res.data.data.map((d) => ({
-          date: new Date(Date.parse(d.valid_date)).toLocaleString("en-us", {
-            weekday: "short",
-          }),
-          max: d.max_temp,
-          min: d.min_temp,
-          icon: d.weather.icon,
-          desc: d.weather.description,
-        }));
-        let filteredForecast = myForecast.filter((newForecast, i) => i > 0);
-        setForecast(filteredForecast);
-        calCitySunset(response.data.sys.sunset, response.data.timezone);
-        calCitySunrise(response.data.sys.sunrise, response.data.timezone);
-        calCurrentTime(response.data.timezone);
         setCityName("");
       }
     } catch (error) {
       setError("City name was not found");
       setCityName("");
       setWeather({});
-      setCurrentTime(null);
       setTimeout(() => {
         setError("");
       }, 3000);
     }
   };
+
+  useEffect(() => {
+    const getForecast = async () =>{
+      if(weather.city !== "") {
+
+          const req = await axios.get(
+            `https://api.weatherbit.io/v2.0/forecast/daily?city=${weather.city}&key=681006333aa8439e85280af36ab1d28e&days=6`
+          );
+          const res = await req;
+          let myForecast = res.data.data.map((d) => ({
+            date: new Date(Date.parse(d.valid_date)).toLocaleString("en-us", {
+              weekday: "short",
+            }),
+            max: d.max_temp,
+            min: d.min_temp,
+            icon: d.weather.icon,
+            desc: d.weather.description,
+          }));
+          let filteredForecast = myForecast.filter((newForecast, i) => i > 0);
+          setForecast(filteredForecast);
+        }
+      }
+    getForecast();
+    },[weather.city])
 
   return (
     <>
@@ -125,30 +94,17 @@ const Wrapper = () => {
           forecast,
           cityname,
           setCityName,
-          timeofday,
-          sunsettime,
-          sunrisetime,
-          currentTime,
-          currentDate,
           error,
         }}
       >
-        {timeofday >= sunrisetime && timeofday <= sunsettime ? (
-          <StyledWrapperDay>
+          <WrapperDay>
             <TopSection />
             <Weatherwrap />
-            <WeatherInfo />
-          </StyledWrapperDay>
-        ) : (
-          <StyledWrapperNight>
-            <TopSection />
-            <Weatherwrap />
-            <WeatherInfo />
-          </StyledWrapperNight>
-        )}
+            <Forecast />
+          </WrapperDay>
       </WeatherContext.Provider>
     </>
   );
 };
 
-export default Wrapper;
+export default WrapperComponent;

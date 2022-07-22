@@ -1,53 +1,82 @@
 import React, { useContext, useState } from 'react';
 import WeatherContext from '../context';
-import { 
-        CityName, 
-        CitySpace, 
-        CountryName, 
-        LocationWrap, 
-        SearchTime, 
-        TempSpace, 
-        TempVal, 
-        TempWrap, 
-        WeatherWrapper } from '../styles/styledweatherwrapper';
-import Weatherimage from './weatherimage';
+import { Weather } from '../styles/weather.style';
 
 
 
 const Weatherwrap = () => {
 
 
-    const {weather, currentTime, currentDate, error} = useContext(WeatherContext);
+    const {weather, error} = useContext(WeatherContext);
 
-    const {city, country, temperature} = weather;
+    const {city, temperature, windspeed, humidity, desc_img, description} = weather;
 
     const [metric, setMetric] = useState(false);
 
+    const { 
+            CityName, 
+            LocationWrap, 
+            TempSpace, 
+            TempVal, 
+            TempWrap, 
+            WeatherWrapper,
+            WeatherExtraWrapper,
+            ExtraInnerDay,
+            WeatherImage,
+            CurrentDate
+            } = Weather;
+
     const metricSwitch = () => {
-        setMetric(!metric);
+        setMetric(prevState => !prevState);
     }
+
+    const currentDate = () => {
+        return new Date().toLocaleString("en-us", {
+            weekday: "long",
+            month:"short",
+            day: "numeric"
+        })
+    }
+    let today = currentDate();
 
     return (
         <>
             <WeatherWrapper>
-                <CitySpace>
-                    <LocationWrap>
-                        <CityName>{city}{city && <span>,&nbsp;</span>}</CityName>
-                        <CountryName>{country}</CountryName>
-                    </LocationWrap>
-                    {currentTime && <SearchTime>{currentTime}</SearchTime>}
-                    {!error && currentDate && <span>{currentDate}</span>}
-                
-                </CitySpace>
                 <TempSpace>
-                    <Weatherimage />
+                    {!error && 
+                        city && 
+                        <CurrentDate>
+                            {today}
+                        </CurrentDate>
+                    }
+                    <WeatherImage>
+                         <img src={desc_img} alt={description} title={description} />
+                    </WeatherImage>
                     <TempWrap onClick={metricSwitch}>
                         {temperature && metric && <TempVal><span>{temperature}&deg;C</span></TempVal>}
                         {temperature && !metric && <TempVal><span>{(temperature * (9/5)+32).toFixed(1)}&deg;F</span></TempVal>}
 
                     </TempWrap>
+                    <LocationWrap>
+                        <CityName>{city}</CityName>
+                    </LocationWrap>
                     
+                    <WeatherExtraWrapper>
+                    {windspeed ?
+                        <ExtraInnerDay>
+                            <li>
+                                <h5>{Math.round(windspeed).toFixed(1)}</h5>
+                                <span>Wind(mph)</span>
+                            </li>
+                            <li>
+                                <h5>{humidity}</h5>
+                                <span>Humidity(%)</span>
+                            </li>
+                            
+                        </ExtraInnerDay> : "" }
+                    </WeatherExtraWrapper>
                 </TempSpace>
+                
             </WeatherWrapper>
         </>
     )
