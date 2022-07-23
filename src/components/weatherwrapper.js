@@ -14,7 +14,7 @@ const Weatherwrap = () => {
     const [metric, setMetric] = useState(false);
 
     const { 
-            CityName, 
+            CityName,
             LocationWrap, 
             TempSpace, 
             TempVal, 
@@ -53,9 +53,9 @@ const Weatherwrap = () => {
                          <img src={desc_img} alt={description} title={description} />
                     </WeatherImage>
                     <TempWrap onClick={metricSwitch}>
+                        <span>{description}</span>
                         {temperature && metric && <TempVal><span>{temperature}&deg;C</span></TempVal>}
                         {temperature && !metric && <TempVal><span>{(temperature * (9/5)+32).toFixed(1)}&deg;F</span></TempVal>}
-
                     </TempWrap>
                     <LocationWrap>
                         <CityName>{city}</CityName>
