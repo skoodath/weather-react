@@ -6,7 +6,7 @@ export const Weather = {
     justify-content: center;  
     align-items: center;
     user-select: none;
-    background-color: #8f9bff;
+    background-image: radial-gradient(#80beff, #fff 90%);;
     border-radius: 0 0 10px 10px;
     padding: 0 0 2rem;
     height: fit-content;
@@ -24,7 +24,7 @@ export const Weather = {
 
   TempSpace: styled.div`
     width: 100%;
-    color: #fff;
+    color: #002041;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -114,7 +114,7 @@ WeatherImage: styled.div`
   }
 `,
 CurrentDate: styled.div`
-  color: #fff;
+  color: #002041;
 `,
 }
 

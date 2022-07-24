@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Main } from "../styles/wrapper.style";
 import Weatherwrap from "./weatherwrapper";
 import TopSection from "./topsection";
@@ -10,21 +10,24 @@ const WrapperComponent = () => {
 
   const { Wrapper } = Main;
 
+  const inputRef = useRef(null);
+
+  
+
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState([]);
-  const [cityname, setCityName] = useState("");
   const [error, setError] = useState("");
 
-  const getCity = (event) => {
-    event.preventDefault();
-    setCityName(event.target.value);
-  };
+  const capitalize = (string) => {
+    return string[0].toUpperCase()+string.split("").slice(1).join("");
+  }
 
   const getWeather = (event) => {
     event.preventDefault();
 
     const apikey = `appid=301063ece3c24814a1f7ea252290ef1a`;
     const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=`;
+    const cityname =  inputRef.current.value;
 
       if (event.key === "Enter" && !cityname) {
         alert("enter a valid city name");
@@ -44,10 +47,8 @@ const WrapperComponent = () => {
           city: weather.name,
           country: weather.sys.country,
           temperature: weather.main.temp.toFixed(1),
-          temp_high: weather.main.temp_max.toFixed(0),
-          temp_low: weather.main.temp_min.toFixed(0),
           feels_like: weather.main.feels_like.toFixed(0),
-          description: weather.weather[0].description,
+          description: capitalize(weather.weather[0].description),
           desc_img: `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`,
           windspeed: weather.wind.speed,
           humidity: weather.main.humidity,
@@ -63,10 +64,10 @@ const WrapperComponent = () => {
         }));
         let filteredForecast = myForecast.filter((newForecast, i) => i > 0);
         setForecast(filteredForecast)
-        setCityName("");
+        inputRef.current.value = "";
       }).catch(error => {
         setError("City name was not found");
-        setCityName("");
+        inputRef.current.value = "";
         setWeather({});
         setForecast([]);
         setTimeout(() => {
@@ -76,21 +77,18 @@ const WrapperComponent = () => {
   } 
 }
 
-    return (
+return (
     <>
       <WeatherContext.Provider
         value={{
           getWeather,
-          getCity,
           weather,
           forecast,
-          cityname,
-          setCityName,
           error,
         }}
       >
           <Wrapper>
-            <TopSection />
+            <TopSection ref={inputRef} />
             <Weatherwrap />
             <Forecast />
           </Wrapper>

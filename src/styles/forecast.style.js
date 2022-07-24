@@ -6,21 +6,22 @@ export const ForeCast = {
   `,
   ForecastData: styled.ul`
   display: flex;
+  gap: 5px;
 `,
 ForecastDataItem: styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 90px;
   width: 50px;
   border-radius: 4px;
-  background-color: #e7e9ff;
+  background-color: #cce5ff;
   flex-basis: calc(100%-5);
   flex-grow: 1;
   flex-shrink: 1;
-  margin: 0 0.2rem;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  color: #002041;
   img {
     width: 50%;
   }

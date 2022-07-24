@@ -1,12 +1,10 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import { Header} from '../styles/header.style';
 import WeatherContext from '../context';
 
-const TopSection = (props, ref) => {
+const TopSection = forwardRef((props, ref) => {
 
-    const {getWeather, getCity, cityname} = useContext(WeatherContext);
-
-    const inputRef = useRef(null);
+    const {getWeather} = useContext(WeatherContext);
 
     const {error} = useContext(WeatherContext)
 
@@ -23,12 +21,10 @@ const TopSection = (props, ref) => {
                     <CitySearch>
                         <SearchBox 
                             type="text" 
-                            onChange={getCity} 
-                            value={cityname}
                             onKeyUp={getWeather}
-                            placeholder='Type city...'
+                            placeholder='Search city...'
                             error={error}
-                            ref={inputRef}
+                            ref={ref}
                             />
                     </CitySearch >
                 </SectionInner>
@@ -38,6 +34,6 @@ const TopSection = (props, ref) => {
             </SectionWrapper>   
         </>
     )
-}
+})
 
 export default TopSection;

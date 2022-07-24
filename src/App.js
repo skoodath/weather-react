@@ -1,12 +1,12 @@
 import React from 'react';
 import GlobalStyle from './styles/global.style';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import WrapperComponent from './components/wrapper';
 
 const App = () => {
  
   return (
-      <>
+      <HelmetProvider>
         <Helmet>
           <title>Daily Weather Snapshot</title>
           <meta name="description" content="An web app to lookup current weather and five days weather forecast" />
@@ -18,7 +18,7 @@ const App = () => {
         </Helmet>
         <WrapperComponent />
         <GlobalStyle />
-      </>
+      </HelmetProvider>
   )
   
 }

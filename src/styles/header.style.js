@@ -9,7 +9,6 @@ export const Header = {
     flex-direction: column;
     height: 100px;
     user-select: none;
-    background-color: #8f9bff;
     border-radius: 10px 10px 0 0;
   `,
   SectionInner: styled.div`
@@ -43,7 +42,7 @@ export const Header = {
 
   SearchBox: styled.input`
     border: none;
-    border-bottom: ${({ error }) => (error ? "2px solid red" : "2px solid #ffffff")};
+    border-bottom: ${({ error }) => (error ? "2px solid red" : "2px solid #80beff")};
     outline: none;
     padding: 0.2rem;
     width: 100%;
@@ -52,12 +51,13 @@ export const Header = {
     position: absolute;
     font-size: 18px;
     background-color: transparent;
-    color: #fff;
+    color: #002041;
     &:focus {
       transition-duration: 0.5s;
+      border-bottom: ${({ error }) => (error ? "2px solid red" : "2px solid #002041")};
     }
     &::placeholder {
-      color: #fff;
+      color: #013335;
     }
   `,
   
