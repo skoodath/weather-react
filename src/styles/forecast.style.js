@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const ForeCast = {
-  ForecastWrapper: styled.div`
-    padding: 0 1rem;
+  ForecastWrapper: styled.section`
     margin: 2rem 0 0 0;
   `,
   ForecastData: styled.ul`
@@ -16,7 +15,7 @@ ForecastDataItem: styled.li`
   height: 90px;
   width: 50px;
   border-radius: 4px;
-  background-color: #ecfcff45;
+  background-color: #e7e9ff;
   flex-basis: calc(100%-5);
   flex-grow: 1;
   flex-shrink: 1;

@@ -2,8 +2,6 @@ import React, { useContext, useState } from 'react';
 import WeatherContext from '../context';
 import { Weather } from '../styles/weather.style';
 
-
-
 const Weatherwrap = () => {
 
 
