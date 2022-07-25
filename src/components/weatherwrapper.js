@@ -47,9 +47,9 @@ const Weatherwrap = () => {
                             {today}
                         </CurrentDate>
                     }
-                    <WeatherImage>
+                    {!error && <WeatherImage>
                          <img src={desc_img} alt={description} title={description} />
-                    </WeatherImage>
+                    </WeatherImage>}
                     <TempWrap onClick={metricSwitch}>
                         <span>{description}</span>
                         {temperature && metric && <TempVal><span>{temperature}&deg;C</span></TempVal>}
@@ -63,11 +63,11 @@ const Weatherwrap = () => {
                     {windspeed ?
                         <ExtraInnerDay>
                             <li>
-                                <h5>{Math.round(windspeed).toFixed(1)}</h5>
+                                <h2>{Math.round(windspeed).toFixed(1)}</h2>
                                 <span>Wind(mph)</span>
                             </li>
                             <li>
-                                <h5>{humidity}</h5>
+                                <h2>{humidity}</h2>
                                 <span>Humidity(%)</span>
                             </li>
                             

@@ -40,7 +40,7 @@ export const Weather = {
     align-items: center;
     width: 100%;
   `,
-  TempVal: styled.div`
+  TempVal: styled.h1`
     span {
       font-size: 3rem;
       margin: 0;
@@ -95,7 +95,7 @@ ExtraInnerDay: styled.ul`
       user-select: none;
     }
     span {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       user-select: none;
     }
   }
@@ -107,11 +107,8 @@ WeatherImage: styled.div`
   align-items: center;
   justify-content: center;
   user-select: none;
-  h3 {
-    color: #fff;
+  img {
     width: 100%;
-    text-align: center;
-    margin: 0 0.4rem;
   }
 `,
 CurrentDate: styled.div`

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ForeCast = {
   ForecastWrapper: styled.section`
-    margin: 5rem 0 0 0;
+    margin: 2.5rem 0 0 0;
     position: relative;
     z-index: 1;
   `,
@@ -35,7 +35,7 @@ ForecastDataItem: styled.li`
     width: 50%;
   }
   span {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 `
 }

@@ -27,7 +27,7 @@ const TopSection = forwardRef((props, ref) => {
                                 error={error}
                                 ref={ref}
                                 />
-                            <SearchButton>
+                            <SearchButton aria-label="Search">
                                 <FiSearch />
                             </SearchButton>
                         </CitySearch>
