@@ -28,7 +28,10 @@ const WrapperComponent = () => {
     const cityname =  inputRef.current.value;
 
       if (!cityname) {
-        alert("enter a valid city name");
+        setError("City name cannot be blank!");
+        setTimeout(() => {
+          setError("");
+        }, 3000);
         return;
       }
       Promise.all([
@@ -68,8 +71,8 @@ const WrapperComponent = () => {
       setWeather({});
       setForecast([]);
       setTimeout(() => {
-      setError("");
-    }, 3000);
+        setError("");
+      }, 3000);
   })
 }
 

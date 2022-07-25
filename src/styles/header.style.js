@@ -9,6 +9,7 @@ export const Header = {
     height: 100px;
     user-select: none;
     border-radius: 10px 10px 0 0;
+    position: relative;
   `,
   SectionInner: styled.div`
     display: flex;
@@ -76,13 +77,17 @@ export const Header = {
   `,
   
   ErrorMessage: styled.span`
-    color: #ff0000;
-    background-color: #ffffff65;
-    padding: 0.2rem;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
+    color: #ffffff;
+    background-color: #000000;
+    padding: 0.5rem;
+    border-radius: 5px;
     font-size: 0.8rem;
+    position: absolute;
+    left: 50%;
+    bottom: -10%;
+    transform: translate(-50%);
+    z-index: 1;
+    width: 80%;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   `
 }

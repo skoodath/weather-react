@@ -5,9 +5,7 @@ import { FiSearch } from "react-icons/fi";
 
 const TopSection = forwardRef((props, ref) => {
 
-    const {getWeather} = useContext(WeatherContext);
-
-    const {error} = useContext(WeatherContext)
+    const {getWeather, error} = useContext(WeatherContext);
 
     const { CitySearch, 
         SectionWrapper,
@@ -29,7 +27,9 @@ const TopSection = forwardRef((props, ref) => {
                                 error={error}
                                 ref={ref}
                                 />
-                            <SearchButton><FiSearch /></SearchButton>
+                            <SearchButton>
+                                <FiSearch />
+                            </SearchButton>
                         </CitySearch>
                     </SearchForm>
                 </SectionInner>
