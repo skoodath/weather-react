@@ -6,11 +6,12 @@ export const Weather = {
     justify-content: center;  
     align-items: center;
     user-select: none;
-    background-image: radial-gradient(#80beff, #fff 90%);;
     border-radius: 0 0 10px 10px;
     padding: 0 0 2rem;
     height: fit-content;
     min-height: 360px;
+    position: relative;
+    z-index: 1;
   `,
 
   LocationWrap: styled.div`
