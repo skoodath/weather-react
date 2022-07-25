@@ -1,6 +1,7 @@
 import React, { useContext, forwardRef } from 'react';
 import { Header} from '../styles/header.style';
 import WeatherContext from '../context';
+import { FiSearch } from "react-icons/fi";
 
 const TopSection = forwardRef((props, ref) => {
 
@@ -9,8 +10,10 @@ const TopSection = forwardRef((props, ref) => {
     const {error} = useContext(WeatherContext)
 
     const { CitySearch, 
-        SectionWrapper, 
-        SearchBox, 
+        SectionWrapper,
+        SearchForm,
+        SearchBox,
+        SearchButton,
         SectionInner,
         ErrorMessage } = Header;
 
@@ -18,15 +21,17 @@ const TopSection = forwardRef((props, ref) => {
         <>
             <SectionWrapper>
                 <SectionInner>
-                    <CitySearch>
-                        <SearchBox 
-                            type="text" 
-                            onKeyUp={getWeather}
-                            placeholder='Search city...'
-                            error={error}
-                            ref={ref}
-                            />
-                    </CitySearch >
+                    <SearchForm onSubmit={getWeather}>
+                        <CitySearch>
+                            <SearchBox 
+                                type="text"
+                                placeholder='Search city...'
+                                error={error}
+                                ref={ref}
+                                />
+                            <SearchButton><FiSearch /></SearchButton>
+                        </CitySearch>
+                    </SearchForm>
                 </SectionInner>
                 
                 {error && 

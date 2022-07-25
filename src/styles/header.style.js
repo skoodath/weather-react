@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { WiDaySunny } from "react-icons/wi";
-import { TiWeatherNight } from "react-icons/ti";
+
 
 export const Header = {
 
@@ -18,26 +17,41 @@ export const Header = {
     padding: 1.5rem 1rem 0.4rem;
     height: 80px;
   `,
-  DayorNight: styled.div`
-    width: 10%;
-    height: 90%;
-    display: flex;
-    align-items: center;
-  `,
-  CitySearch: styled.div`
+  SearchForm: styled.form`
     width: 90%;
     height: 90%;
+    margin: 0 auto;
+  `,
+  CitySearch: styled.div`
+    width: 100%;
+    height: 100%;    
     position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
   `,
-  DayIcon: styled(WiDaySunny)`
-    fill: #fff;
+  SearchButton: styled.button`
+    background-color: transparent;
+    border: none;
+    outline: none;
     font-size: 1.8rem;
-  `,
-  NightIcon: styled(TiWeatherNight)`
-    fill: #fff;
-    font-size: 1.8rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    margin: 0 0.2rem;
+    cursor: pointer;
+    svg{
+      stroke: #80beff;
+      font-weight: 600;
+      font-size: 1.3rem;
+    }
+    &:hover {
+      svg {
+        transition: stroke 0.5s;
+        stroke: #002041; 
+      }
+    }
   `,
 
   SearchBox: styled.input`

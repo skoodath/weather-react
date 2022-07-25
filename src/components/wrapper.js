@@ -12,8 +12,6 @@ const WrapperComponent = () => {
 
   const inputRef = useRef(null);
 
-  
-
   const [weather, setWeather] = useState({});
   const [forecast, setForecast] = useState([]);
   const [error, setError] = useState("");
@@ -29,52 +27,50 @@ const WrapperComponent = () => {
     const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=`;
     const cityname =  inputRef.current.value;
 
-      if (event.key === "Enter" && !cityname) {
+      if (!cityname) {
         alert("enter a valid city name");
         return;
       }
-      if (event.key === "Enter" && cityname) {
-        Promise.all([
-          axios.get(
-            `${baseURL}${cityname}&${apikey}&units=metric`
-          ),
-          axios.get(
-            `https://api.weatherbit.io/v2.0/forecast/daily?city=${cityname}&key=681006333aa8439e85280af36ab1d28e&days=6`
-          )
-        ]).then(([{data: weather}, {data: forecast}]) => {
-          
-        setWeather({
-          city: weather.name,
-          country: weather.sys.country,
-          temperature: weather.main.temp.toFixed(1),
-          feels_like: weather.main.feels_like.toFixed(0),
-          description: capitalize(weather.weather[0].description),
-          desc_img: `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`,
-          windspeed: weather.wind.speed,
-          humidity: weather.main.humidity,
-        })
-        let myForecast = forecast.data.map((d) => ({
-          date: new Date(Date.parse(d.valid_date)).toLocaleString("en-us", {
-            weekday: "short",
-          }),
-          max: d.max_temp,
-          min: d.min_temp,
-          icon: d.weather.icon,
-          desc: d.weather.description,
-        }));
-        let filteredForecast = myForecast.filter((newForecast, i) => i > 0);
-        setForecast(filteredForecast)
-        inputRef.current.value = "";
-      }).catch(error => {
-        setError("City name was not found");
-        inputRef.current.value = "";
-        setWeather({});
-        setForecast([]);
-        setTimeout(() => {
-        setError("");
-      }, 3000);    
-    })
-  } 
+      Promise.all([
+        axios.get(
+          `${baseURL}${cityname}&${apikey}&units=metric`
+        ),
+        axios.get(
+          `https://api.weatherbit.io/v2.0/forecast/daily?city=${cityname}&key=681006333aa8439e85280af36ab1d28e&days=6`
+        )
+      ]).then(([{data: weather}, {data: forecast}]) => {
+        
+      setWeather({
+        city: weather.name,
+        country: weather.sys.country,
+        temperature: weather.main.temp.toFixed(1),
+        feels_like: weather.main.feels_like.toFixed(0),
+        description: capitalize(weather.weather[0].description),
+        desc_img: `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`,
+        windspeed: weather.wind.speed,
+        humidity: weather.main.humidity,
+      })
+      let myForecast = forecast.data.map((d) => ({
+        date: new Date(Date.parse(d.valid_date)).toLocaleString("en-us", {
+          weekday: "short",
+        }),
+        max: d.max_temp,
+        min: d.min_temp,
+        icon: d.weather.icon,
+        desc: d.weather.description,
+      }));
+      let filteredForecast = myForecast.filter((newForecast, i) => i > 0);
+      setForecast(filteredForecast)
+      inputRef.current.value = "";
+    }).catch(error => {
+      setError("City name was not found");
+      inputRef.current.value = "";
+      setWeather({});
+      setForecast([]);
+      setTimeout(() => {
+      setError("");
+    }, 3000);
+  })
 }
 
 return (
