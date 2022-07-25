@@ -25,7 +25,7 @@ const WrapperComponent = () => {
 
     const apikey = `appid=301063ece3c24814a1f7ea252290ef1a`;
     const baseURL = `https://api.openweathermap.org/data/2.5/weather?q=`;
-    const cityname =  inputRef.current.value;
+    const cityname =  inputRef.current.value.trim();
 
       if (!cityname) {
         setError("City name cannot be blank!");
@@ -65,9 +65,11 @@ const WrapperComponent = () => {
       let filteredForecast = myForecast.filter((newForecast, i) => i > 0);
       setForecast(filteredForecast)
       inputRef.current.value = "";
+      inputRef.current.blur();
     }).catch(error => {
       setError("City name was not found");
       inputRef.current.value = "";
+      inputRef.current.blur();
       setWeather({});
       setForecast([]);
       setTimeout(() => {
