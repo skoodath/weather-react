@@ -1,18 +1,19 @@
 import React, { useContext, useRef } from "react";
-import { Header } from "../styles/landing.style";
+import { InputGroup, Value } from "../styles/search.style";
 import { WeatherContext } from "../context/weatherContext";
-import { FiSearch } from "react-icons/fi";
 
-const TopSection = () => {
+const Search = () => {
   const {
     CitySearch,
     SectionWrapper,
     SearchForm,
-    SearchBox,
     SearchButton,
+    SearchBox,
     SectionInner,
     ErrorMessage,
-  } = Header;
+  } = InputGroup;
+
+  const { Container, TextOne, TextTwo, TextThree } = Value;
 
   const { getWeather, error } = useContext(WeatherContext);
 
@@ -27,18 +28,23 @@ const TopSection = () => {
       <SectionWrapper>
         <SectionInner>
           <SearchForm onSubmit={handleSubmit}>
+            <SearchButton />
             <CitySearch>
               <SearchBox
                 type="text"
-                placeholder="Search city..."
+                placeholder="search"
                 error={error}
                 ref={inputRef}
               />
-              <SearchButton aria-label="Search">
-                <FiSearch />
-              </SearchButton>
             </CitySearch>
           </SearchForm>
+          <Container>
+            <TextOne>Search</TextOne>
+            <TextTwo>weather</TextTwo>
+            <TextOne>in</TextOne>
+            <TextThree>your</TextThree>
+            <TextTwo>city</TextTwo>
+          </Container>
         </SectionInner>
 
         {error && <ErrorMessage>{error}</ErrorMessage>}
@@ -47,4 +53,4 @@ const TopSection = () => {
   );
 };
 
-export default TopSection;
+export default Search;

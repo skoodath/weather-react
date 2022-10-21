@@ -1,6 +1,6 @@
-import React from "react";
 import GlobalStyle from "./styles/global.style";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { WeatherContextProvider } from "./context/weatherContext";
 import Wrapper from "./components/Wrapper";
 
 const App = () => {
@@ -24,7 +24,9 @@ const App = () => {
           content="https://weathersnap.netlify.app/"
         />
       </Helmet>
-      <Wrapper />
+      <WeatherContextProvider>
+        <Wrapper />
+      </WeatherContextProvider>
       <GlobalStyle />
     </HelmetProvider>
   );

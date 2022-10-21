@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 16px;
         line-height: normal;
         letter-spacing: 1px;
+        color: #051524;
     }
     body{
         font-family: 'Open Sans', sans-serif;

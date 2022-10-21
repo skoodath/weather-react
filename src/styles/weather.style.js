@@ -7,20 +7,11 @@ export const WeatherStyle = {
     align-items: center;
     user-select: none;
     border-radius: 0 0 10px 10px;
-    padding: 0 0 2rem;
+    margin: 1.5rem auto;
     height: fit-content;
-    min-height: 360px;
     position: relative;
     z-index: 1;
-  `,
-
-  LocationWrap: styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  `,
-  CityName: styled.h1`
-    font-size: 1.2rem;
+    flex: 1;
   `,
 
   TempSpace: styled.div`
@@ -29,7 +20,6 @@ export const WeatherStyle = {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1.5rem auto 0;
     border-radius: 5px;
     cursor: pointer;
   `,
@@ -110,8 +100,5 @@ export const WeatherStyle = {
     img {
       width: 100%;
     }
-  `,
-  CurrentDate: styled.div`
-    color: #002041;
   `,
 };

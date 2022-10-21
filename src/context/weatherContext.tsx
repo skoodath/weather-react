@@ -13,6 +13,7 @@ type WeatherState = {
     speed: number;
   };
 };
+
 type ForecastState = [];
 
 interface WeatherContextType {
@@ -58,8 +59,6 @@ const WeatherContextProvider = ({ children }) => {
   ) => {
     event.preventDefault();
 
-    console.log(input.current);
-
     const cityname = input.current!.value.trim();
 
     if (!cityname) {
@@ -97,7 +96,7 @@ const WeatherContextProvider = ({ children }) => {
       .catch((error) => {
         setError("City name was not found");
         input.current!.value = "";
-        //inputRef.current.blur();
+        input.current!.blur();
         setCurrentWeather({
           weather: [{ description: "", icon: "" }],
           main: { temp: 0, humidity: 0 },

@@ -1,33 +1,17 @@
-import styled from 'styled-components';
-import {device } from './device';
+import styled from "styled-components";
+import { device } from "./device";
 
 export const Main = {
   Wrapper: styled.section`
-    background-image: linear-gradient(#eef6ff,#f0f8ff);
     width: 100vw;
-    height: 100vh;
-    padding: 10px;
-    box-shadow: 1px 1px 15px rgba(0,0,0,0.1), -1px -1px 14px rgba(0,0,0,0.1) inset;
-    position: relative ;
-    @media ${device.tablet}{
-      border-radius: 15px;
-    }
-    @media ${device.desktop}{
-      max-width: 360px;
-      border-radius: 15px;
-      height: 698px;
-      margin: 2rem auto;
-      box-shadow: 1px 1px 15px rgba(0,0,0,0.1), -1px -1px 14px rgba(0,0,0,0.1);
-    }
-    &::before {
-      position: absolute;
-      content: "";
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 50%;
-      transform: translate(-50%, 0);
-      background-image: radial-gradient(#80beff, #fff 80%);
+    min-height: 100vh;
+    position: relative;
+    background-image: linear-gradient(#f4f4f4 5%, #38a899bc 80%, #89aee5ba);
+    @media ${device.desktop} {
+      display: flex;
+      margin: 0 auto;
+      box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1),
+        -1px -1px 14px rgba(0, 0, 0, 0.1);
     }
   `,
-}
+};

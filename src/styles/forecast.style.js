@@ -1,41 +1,47 @@
 import styled from "styled-components";
+import { device } from "./device";
 
-export const ForeCast = {
+export const ForeCastStyle = {
   ForecastWrapper: styled.section`
-    margin: 2.5rem 0 0 0;
+    margin: 1.5rem 0 0 0;
     position: relative;
-    z-index: 1;
+    flex: 1;
   `,
   ForecastTitle: styled.h2`
+    width: 80%;
     margin: 0 auto 1rem;
-    text-align: center;
     color: #002041;
     text-transform: uppercase;
   `,
   ForecastData: styled.ul`
-  display: flex;
-  gap: 5px;
-  width: fit-content;
-  margin: 0 auto;
-`,
-ForecastDataItem: styled.li`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  background-color: #cce5ff;
-  flex-basis: calc(100%-5);
-  flex-grow: 1;
-  flex-shrink: 1;
-  padding: 0.5rem 0;
-  font-weight: 600;
-  color: #002041;
-  img {
-    width: 50%;
-  }
-  span {
-    font-size: 0.75rem;
-  }
-`
-}
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #90e6db78;
+    border-radius: 10px;
+  `,
+  ForecastDataItem: styled.li`
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 4px;
+    flex-basis: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0.4rem 0;
+    font-weight: 600;
+    gap: 5px;
+    img {
+      width: 20%;
+      padding: 0.2rem;
+      @media ${device.desktop} {
+        width: 15%;
+      }
+    }
+    span {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+  `,
+};

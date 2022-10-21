@@ -1,22 +1,19 @@
+import { useContext } from "react";
 import { Main } from "../styles/wrapper.style";
-import Weatherwrap from "./Weather";
-import TopSection from "./Header";
-
-import { WeatherContextProvider } from "../context/weatherContext";
-import Forecast from "./forecast";
+import { WeatherContext } from "../context/weatherContext";
+import Search from "./Search";
+import WeatherMain from "./weather/WeatherMain";
 
 const Wrapper = () => {
   const { Wrapper } = Main;
+  const { currentWeather } = useContext(WeatherContext);
 
   return (
     <>
-      <WeatherContextProvider>
-        <Wrapper>
-          <TopSection />
-          <Weatherwrap />
-          <Forecast />
-        </Wrapper>
-      </WeatherContextProvider>
+      <Wrapper>
+        {currentWeather.name.length === 0 && <Search />}
+        {currentWeather.name.length !== 0 && <WeatherMain />}
+      </Wrapper>
     </>
   );
 };

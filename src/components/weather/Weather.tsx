@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { WeatherContext } from "../context/weatherContext";
-import { WeatherStyle } from "../styles/weather.style";
+import { WeatherContext } from "../../context/weatherContext";
+import { WeatherStyle } from "../../styles/weather.style";
 
 const Weather = () => {
   const { currentWeather, error } = useContext(WeatherContext);
@@ -21,8 +21,6 @@ const Weather = () => {
   };
 
   const {
-    CityName,
-    LocationWrap,
     TempSpace,
     TempVal,
     TempWrap,
@@ -30,27 +28,16 @@ const Weather = () => {
     WeatherExtraWrapper,
     ExtraInnerDay,
     WeatherImage,
-    CurrentDate,
   } = WeatherStyle;
 
   const metricSwitch = () => {
     setMetric((prevState) => !prevState);
   };
 
-  const currentDate = () => {
-    return new Date().toLocaleString("en-us", {
-      weekday: "long",
-      month: "short",
-      day: "numeric",
-    });
-  };
-  let today = currentDate();
-
   return (
     <>
       <WeatherWrapper>
         <TempSpace>
-          {!error && temp && <CurrentDate>{today}</CurrentDate>}
           {!error && temp && (
             <WeatherImage>
               <img
@@ -61,7 +48,6 @@ const Weather = () => {
             </WeatherImage>
           )}
           <TempWrap onClick={metricSwitch}>
-            <span>{capitalize(description)}</span>
             {metric && currentWeather && (
               <TempVal>
                 <span>{temp}&deg;C</span>
@@ -72,10 +58,8 @@ const Weather = () => {
                 <span>{(temp * (9 / 5) + 32).toFixed(1)}&deg;F</span>
               </TempVal>
             )}
+            <span>{capitalize(description)}</span>
           </TempWrap>
-          <LocationWrap>
-            <CityName>{city}</CityName>
-          </LocationWrap>
 
           <WeatherExtraWrapper>
             {speed ? (
