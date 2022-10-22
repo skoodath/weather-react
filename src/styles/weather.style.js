@@ -12,6 +12,7 @@ export const WeatherStyle = {
     position: relative;
     z-index: 1;
     flex: 1;
+    width: 100%;
   `,
 
   TempSpace: styled.div`
@@ -28,7 +29,7 @@ export const WeatherStyle = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: min(100%, 50%);
+    width: min(60%, 40rem);
     background-image: linear-gradient(#ffffff37, #ffffff26);
     padding: 0.5rem;
     border-radius: 8px;

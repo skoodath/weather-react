@@ -13,7 +13,6 @@ const Container = styled.section`
     margin: auto;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
     background-image: linear-gradient(
       rgb(255 255 255 / 0.3),
       rgb(255 255 255 / 0.3)

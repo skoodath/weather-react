@@ -4,7 +4,7 @@ import { device } from "./device";
 export const ForeCastStyle = {
   ForecastWrapper: styled.section`
     width: 80%;
-    margin: 1.5rem 0 0 0;
+    margin: 1.5rem 0;
     position: relative;
     flex: 1;
   `,
