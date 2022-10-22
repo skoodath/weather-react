@@ -100,18 +100,12 @@ export const InputGroup = {
     }
   `,
 
-  ErrorMessage: styled.span`
-    color: #ffffff;
-    background-color: #000000;
+  ErrorMessage: styled.div`
+    color: #f8f8f8;
+    background-color: #232323;
     padding: 0.5rem;
     border-radius: 5px;
     font-size: 0.8rem;
-    position: absolute;
-    left: 50%;
-    bottom: -10%;
-    transform: translate(-50%);
-    z-index: 1;
-    width: 80%;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   `,
 };

@@ -29,6 +29,7 @@ const Main = styled.section`
   width: 100%;
   @media ${device.desktop} {
     flex-direction: row;
+    gap: 10px;
   }
 `;
 

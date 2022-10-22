@@ -28,7 +28,10 @@ export const WeatherStyle = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: min(100%, 50%);
+    background-image: linear-gradient(#ffffff37, #ffffff26);
+    padding: 0.5rem;
+    border-radius: 8px;
   `,
   TempVal: styled.h1`
     span {
@@ -52,6 +55,7 @@ export const WeatherStyle = {
   `,
   WeatherExtraWrapper: styled.div`
     padding: 0;
+    margin: 1rem 0 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -71,14 +75,13 @@ export const WeatherStyle = {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      border-radius: 4px;
-      margin: 0.25rem;
+      margin: 0.3rem 0 0;
       padding: 0.8rem;
       border: none;
-      width: 100%;
-      height: 60px;
-      flex-grow: 0;
-      flex-basis: 150px;
+      flex: 1;
+      &:first-child {
+        border-right: 1.5px solid #f8f8f8ab;
+      }
 
       h5 {
         font-size: 1.2rem;

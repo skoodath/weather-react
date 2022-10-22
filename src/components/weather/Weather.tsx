@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { WeatherContext } from "../../context/weatherContext";
 import { WeatherStyle } from "../../styles/weather.style";
+import { capitalize } from "../utils/capitalize";
 
 const Weather = () => {
   const { currentWeather, error } = useContext(WeatherContext);
@@ -14,11 +15,6 @@ const Weather = () => {
   const weatherIcon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
   const [metric, setMetric] = useState(false);
-
-  const capitalize = (string) => {
-    if (string)
-      return string[0].toUpperCase() + string.split("").slice(1).join("");
-  };
 
   const {
     TempSpace,
@@ -50,12 +46,18 @@ const Weather = () => {
           <TempWrap onClick={metricSwitch}>
             {metric && currentWeather && (
               <TempVal>
-                <span>{temp}&deg;C</span>
+                <span>
+                  {temp.toFixed(1)}
+                  <sup>&deg;C</sup>
+                </span>
               </TempVal>
             )}
             {city && !metric && (
               <TempVal>
-                <span>{(temp * (9 / 5) + 32).toFixed(1)}&deg;F</span>
+                <span>
+                  {(temp * (9 / 5) + 32).toFixed(1)}
+                  <sup>&deg;F</sup>
+                </span>
               </TempVal>
             )}
             <span>{capitalize(description)}</span>

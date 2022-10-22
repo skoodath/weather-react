@@ -37,6 +37,7 @@ const Search = () => {
                 ref={inputRef}
               />
             </CitySearch>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
           </SearchForm>
           <Container>
             <TextOne>Search</TextOne>
@@ -46,8 +47,6 @@ const Search = () => {
             <TextTwo>city</TextTwo>
           </Container>
         </SectionInner>
-
-        {error && <ErrorMessage>{error}</ErrorMessage>}
       </SectionWrapper>
     </>
   );

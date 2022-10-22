@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
 import { searchParams } from "../components/utils/constants";
+import { capitalize } from "../components/utils/capitalize";
 
 const { apikeyWeather, apiKeyForecast, baseUrlWeather, baseUrlForecast } =
   searchParams;
@@ -94,7 +95,10 @@ const WeatherContextProvider = ({ children }) => {
         input.current!.blur();
       })
       .catch((error) => {
-        setError("City name was not found");
+        const response = error.response.data;
+        const message = capitalize(response.message);
+        console.log(response.message);
+        setError(message);
         input.current!.value = "";
         input.current!.blur();
         setCurrentWeather({
