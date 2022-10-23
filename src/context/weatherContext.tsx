@@ -66,7 +66,7 @@ const WeatherContextProvider = ({ children }) => {
       setError("City name cannot be blank!");
       setTimeout(() => {
         setError("");
-      }, 3000);
+      }, 5000);
     }
     Promise.all([
       axios.get(

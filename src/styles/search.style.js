@@ -50,16 +50,15 @@ export const InputGroup = {
   `,
   SearchForm: styled.form`
     width: 100%;
-    margin: 0 auto;
+    margin: 3rem auto 2rem;
     flex: 1;
     position: relative;
   `,
   CitySearch: styled.div`
     width: 100%;
-    height: 100%;
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
   `,
   SearchButton: styled(MdArrowForward)`
@@ -69,8 +68,8 @@ export const InputGroup = {
     font-size: 1.8rem;
     position: absolute;
     right: 10px;
-    top: 0;
-    height: 100%;
+    top: 50%;
+    translate: 0 -50%;
     margin: 0 0.2rem;
     cursor: pointer;
     z-index: 1;
@@ -87,7 +86,7 @@ export const InputGroup = {
     display: block;
     background-color: #f8f8f8;
     border: ${({ error }) =>
-      error ? "1px solid red" : "1px solid transparent"};
+      error ? "1px solid #ff3636ab" : "1px solid transparent"};
     outline: 1px solid transparent;
     border-radius: 50px;
     box-shadow: 0 2px 5px rgba(0 0 0 / 0.085);
@@ -95,18 +94,23 @@ export const InputGroup = {
     width: 100%;
     font-size: 16px;
     color: #002041;
+    &:focus {
+      background-color: #f3f3f3;
+      border: 1px solid #7dc5bb;
+      transition: border 0.2s ease-in, background-color 0.2s ease-in;
+    }
     &::placeholder {
       color: #767676;
     }
   `,
 
   ErrorMessage: styled.div`
-    color: #f8f8f8;
-    background-color: #232323;
-    padding: 0.5rem;
+    color: #ff3636ab;
+    padding: 0.2rem;
+    margin: 0.3rem 0 0;
     border-radius: 5px;
-    font-size: 0.8rem;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    font-weight: 700;
   `,
 };
 

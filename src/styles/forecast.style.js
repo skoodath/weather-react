@@ -3,13 +3,18 @@ import { device } from "./device";
 
 export const ForeCastStyle = {
   ForecastWrapper: styled.section`
-    width: 80%;
-    margin: 1.5rem 0;
+    width: 100%;
+    padding: 1.5rem 0;
     position: relative;
     flex: 1;
+    background-image: linear-gradient(#00000015, #00000005);
+    @media ${device.desktop} {
+      margin: 0;
+      padding: 1.5rem 0;
+    }
   `,
   ForecastTitle: styled.h2`
-    width: 80%;
+    width: min(80%, 30rem);
     margin: 0 auto 1rem;
     color: #002041;
     text-transform: uppercase;
@@ -18,16 +23,15 @@ export const ForeCastStyle = {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    padding: 0.5rem;
-    background-color: #90e6db78;
     border-radius: 10px;
+    width: min(80%, 30rem);
   `,
   ForecastDataItem: styled.li`
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-radius: 4px;
-    flex-basis: 100%;
+    flex-basis: 80%;
     flex-grow: 1;
     flex-shrink: 1;
     padding: 0.4rem 0;

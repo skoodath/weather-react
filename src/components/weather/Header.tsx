@@ -9,7 +9,8 @@ const Header = () => {
 
   const { temp } = main;
 
-  const { CityName, LocationWrap, CurrentDate, BackArrowBox } = HeaderStyles;
+  const { CityName, LocationWrap, Location, CurrentDate, BackArrowBox } =
+    HeaderStyles;
 
   const currentDate = () => {
     return new Date().toLocaleString("en-us", {
@@ -26,8 +27,10 @@ const Header = () => {
         <BackArrowBox onClick={() => window.location.reload()}>
           <BackArrow />
         </BackArrowBox>
-        <CityName>{city}</CityName>
-        {!error && temp && <CurrentDate>{today}</CurrentDate>}
+        <Location>
+          <CityName>{city}</CityName>
+          {!error && temp && <CurrentDate>{today}</CurrentDate>}
+        </Location>
       </LocationWrap>
     </>
   );

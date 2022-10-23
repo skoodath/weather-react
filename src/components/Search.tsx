@@ -28,7 +28,6 @@ const Search = () => {
       <SectionWrapper>
         <SectionInner>
           <SearchForm onSubmit={handleSubmit}>
-            <SearchButton />
             <CitySearch>
               <SearchBox
                 type="text"
@@ -36,6 +35,7 @@ const Search = () => {
                 error={error}
                 ref={inputRef}
               />
+              <SearchButton />
             </CitySearch>
             {error && <ErrorMessage>{error}</ErrorMessage>}
           </SearchForm>
