@@ -3,16 +3,18 @@ import { Main } from "../styles/wrapper.style";
 import { WeatherContext } from "../context/weatherContext";
 import Search from "./Search";
 import WeatherMain from "./weather/WeatherMain";
+import Loading from "./Loading";
 
 const Wrapper = () => {
   const { Wrapper } = Main;
-  const { currentWeather } = useContext(WeatherContext);
+  const { currentWeather, loading } = useContext(WeatherContext);
 
   return (
     <>
       <Wrapper>
+        {loading && <Loading />}
         {currentWeather.name.length === 0 && <Search />}
-        {currentWeather.name.length !== 0 && <WeatherMain />}
+        {!loading && currentWeather.name.length !== 0 && <WeatherMain />}
       </Wrapper>
     </>
   );

@@ -15,32 +15,9 @@ export const InputGroup = {
     margin: 0 auto;
     @media ${device.desktop} {
     }
-
-    &::before {
-      content: "";
-      position: absolute;
-      background-color: #000;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      translate: -0.5rem -1rem;
-      filter: blur(500px);
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      background-color: #000;
-      right: 0;
-      bottom: 0;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      translate: -1rem -1rem;
-      filter: blur(300px);
-    }
   `,
   SectionInner: styled.div`
-    display: flex;
+    display: ${({ $loading }) => ($loading ? "none" : "flex")};
     flex-direction: column;
     align-items: center;
     width: min(80%, 40rem);
@@ -50,7 +27,7 @@ export const InputGroup = {
   `,
   SearchForm: styled.form`
     width: 100%;
-    margin: 3rem auto 2rem;
+    margin: 3rem auto 1rem;
     flex: 1;
     position: relative;
   `,
@@ -120,7 +97,6 @@ export const Value = {
     flex-direction: column;
     align-items: center;
     flex: 3;
-    margin: 4rem 0 0;
     gap: 20px;
     text-transform: uppercase;
   `,

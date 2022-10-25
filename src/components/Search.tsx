@@ -15,7 +15,7 @@ const Search = () => {
 
   const { Container, TextOne, TextTwo, TextThree } = Value;
 
-  const { getWeather, error } = useContext(WeatherContext);
+  const { getWeather, loading, error } = useContext(WeatherContext);
 
   let inputRef = useRef<HTMLInputElement>(null);
 
@@ -26,7 +26,7 @@ const Search = () => {
   return (
     <>
       <SectionWrapper>
-        <SectionInner>
+        <SectionInner $loading={loading}>
           <SearchForm onSubmit={handleSubmit}>
             <CitySearch>
               <SearchBox
@@ -35,7 +35,9 @@ const Search = () => {
                 error={error}
                 ref={inputRef}
               />
-              <SearchButton />
+              <button type="submit">
+                <SearchButton />
+              </button>
             </CitySearch>
             {error && <ErrorMessage>{error}</ErrorMessage>}
           </SearchForm>

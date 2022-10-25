@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
 import { searchParams } from "../components/utils/constants";
-import { capitalize } from "../components/utils/capitalize";
 
 const { apikeyWeather, apiKeyForecast, baseUrlWeather, baseUrlForecast } =
   searchParams;
@@ -20,6 +19,7 @@ type ForecastState = [];
 interface WeatherContextType {
   currentWeather: WeatherState;
   forecast: ForecastState;
+  loading: boolean;
   error: string;
   getWeather: (
     event: React.FormEvent<HTMLFormElement>,
@@ -37,6 +37,7 @@ const WeatherContext = createContext<WeatherContextType>({
     },
   },
   forecast: [],
+  loading: false,
   error: "",
   getWeather: () => {},
 });
@@ -53,6 +54,7 @@ const WeatherContextProvider = ({ children }) => {
 
   const [forecast, setForecast] = useState<ForecastState>([]);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const getWeather = (
     event: React.FormEvent<HTMLFormElement>,
@@ -68,6 +70,7 @@ const WeatherContextProvider = ({ children }) => {
         setError("");
       }, 5000);
     }
+    setLoading(true);
     Promise.all([
       axios.get(
         `${baseUrlWeather}${cityname}&appid=${apikeyWeather}&units=metric`
@@ -90,15 +93,14 @@ const WeatherContextProvider = ({ children }) => {
         }));
         let filteredForecast = myForecast.filter((newForecast, i) => i > 0);
         setForecast(filteredForecast);
-
         input.current!.value = "";
         input.current!.blur();
+        setLoading(false);
       })
       .catch((error) => {
-        const response = error.response.data;
-        const message = capitalize(response.message);
-        console.log(response.message);
-        setError(message);
+        if (error.response.status === 404) {
+          setError("City not found");
+        }
         input.current!.value = "";
         input.current!.blur();
         setCurrentWeather({
@@ -113,6 +115,7 @@ const WeatherContextProvider = ({ children }) => {
         setTimeout(() => {
           setError("");
         }, 3000);
+        setLoading(false);
       });
   };
 
@@ -121,6 +124,7 @@ const WeatherContextProvider = ({ children }) => {
       value={{
         currentWeather,
         forecast,
+        loading,
         error,
         getWeather,
       }}

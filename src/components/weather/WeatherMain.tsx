@@ -9,6 +9,7 @@ const Container = styled.section`
   flex-direction: column;
   width: min(100%, 60rem);
   border-radius: 10px;
+  margin: 0 auto;
   @media ${device.desktop} {
     margin: auto;
     justify-content: center;

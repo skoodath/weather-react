@@ -5,6 +5,7 @@ export const ForeCastStyle = {
   ForecastWrapper: styled.section`
     width: 100%;
     padding: 1.5rem 0;
+    margin: 0 auto;
     position: relative;
     flex: 1;
     background-image: linear-gradient(#00000015, #00000005);
